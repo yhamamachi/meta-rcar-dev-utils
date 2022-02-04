@@ -1,0 +1,42 @@
+From 27bf694de0dcc26d5db012208fcdc7bd4a0cb479 Mon Sep 17 00:00:00 2001
+From: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+Date: Wed, 2 Feb 2022 19:11:32 +0900
+Subject: [PATCH 2/3] starterkit: config: os: yocto: Support Yocto 5.9.0
+
+Signed-off-by: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+---
+ starterkit/config/os/yocto/config | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/starterkit/config/os/yocto/config b/starterkit/config/os/yocto/config
+index ed4fd74..bf4339d 100644
+--- a/starterkit/config/os/yocto/config
++++ b/starterkit/config/os/yocto/config
+@@ -6,15 +6,17 @@
+ ; TeraTerm Macro has many limitation
+ ; We need to adjust to it here
+ ;
+-strdim list_version 4
+-strdim list_map     4
++strdim list_version 5
++strdim list_map     5
+ 
+-list_version[0] = "5.5.0"
+-list_version[1] = "5.1.0"
+-list_version[2] = "4.1.0"
+-list_version[3] = "3.21.0"
++list_version[0] = "5.9.0"
++list_version[1] = "5.5.0"
++list_version[2] = "5.1.0"
++list_version[3] = "4.1.0"
++list_version[4] = "3.21.0"
+ 
+ list_map[0] = "map02"
+ list_map[1] = "map02"
+-list_map[2] = "map01"
++list_map[2] = "map02"
+ list_map[3] = "map01"
++list_map[4] = "map01"
+-- 
+2.31.1
+

@@ -1,0 +1,36 @@
+From a578df4a1e6f128cf1f283f0bc8d0cfde673b777 Mon Sep 17 00:00:00 2001
+From: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+Date: Wed, 8 Sep 2021 17:26:02 +0900
+Subject: [PATCH] Fix error when executing mkdir
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This patch avoid following error:
+    > mkdir: cannot create directory ‘AArch32_obj’: File exists
+
+Signed-off-by: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+---
+ makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/makefile b/makefile
+index 481b2e2..9c6058c 100644
+--- a/makefile
++++ b/makefile
+@@ -291,10 +291,10 @@ all: $(OBJECT_DIR) $(OUTPUT_DIR) $(OBJ_FILE_BOOT) $(OBJ_FILE) $(OUTPUT_FILE)
+ # Make Directory
+ #------------------------------------------
+ $(OBJECT_DIR):
+-	-mkdir "$(OBJECT_DIR)"
++	-mkdir -p "$(OBJECT_DIR)"
+ 
+ $(OUTPUT_DIR):
+-	-mkdir "$(OUTPUT_DIR)"
++	-mkdir -p "$(OUTPUT_DIR)"
+ 
+ #------------------------------------------
+ # Compile
+-- 
+2.31.1
+
