@@ -36,7 +36,7 @@ do_install[noexec] = "1"
 
 do_deploy() {
     # Create deploy folder
-    install -d ${DEPLOYDIR}
+    install -d ${DEPLOYDIR}/renesas-bsp-rom-writer_${ARCH}bit/starterkit/
 
     # Copy IPL to deploy folder
     install -m 0644 ${B}/AArch${ARCH}_output/AArch${ARCH}_Flash_writer_SCIF_DUMMY_CERT_E6300400_ULCB.mot \
