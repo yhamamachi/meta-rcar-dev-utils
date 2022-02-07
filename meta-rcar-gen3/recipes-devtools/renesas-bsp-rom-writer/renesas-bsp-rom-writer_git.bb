@@ -4,6 +4,7 @@ LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
+ARCH = "${@'32' if d.getVar('TARGET_ARCH') == 'arm' else '64'}"
 
 inherit deploy
 
