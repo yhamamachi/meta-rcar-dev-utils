@@ -30,6 +30,8 @@ SRC_URI_append = " \
         'file://0003-starterkit-config-mot-Change-to-use-64bit-mode.patch'} \
 "
 
+# do_configure() nothing
+do_configure[noexec] = "1"
 # do_compile() nothing
 do_compile[noexec] = "1"
 # do_install() nothing
