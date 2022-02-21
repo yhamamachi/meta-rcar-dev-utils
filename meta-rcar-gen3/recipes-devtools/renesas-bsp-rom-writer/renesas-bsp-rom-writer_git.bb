@@ -12,7 +12,7 @@ S = "${WORKDIR}/git"
 
 BRANCH = "master"
 SRC_URI = "git://github.com/morimoto/renesas-bsp-rom-writer.git;branch=${BRANCH};protocol=https"
-SRCREV = "4817260fdc4cd6a46ed4557c336c28d8d18d9cae"
+SRCREV = "8ac83fc8c411e23c333372329f4446b0887de2d5"
 
 PV = "git${SRCPV}"
 
@@ -25,9 +25,8 @@ ALLOW_EMPTY_${PN}-staticdev = "1"
 
 SRC_URI_append = " \
     file://0001-script-python-base-Change-Flash-writer-path.patch \
-    file://0002-starterkit-config-os-yocto-Support-Yocto-5.9.0.patch \
     ${@'' if d.getVar('TARGET_ARCH') == 'arm' else \
-        'file://0003-starterkit-config-mot-Change-to-use-64bit-mode.patch'} \
+        'file://0002-starterkit-config-mot-Change-to-use-64bit-mode.patch'} \
 "
 
 # do_configure() nothing
