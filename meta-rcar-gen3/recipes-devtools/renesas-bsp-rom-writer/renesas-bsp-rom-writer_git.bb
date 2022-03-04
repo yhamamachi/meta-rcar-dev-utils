@@ -24,9 +24,10 @@ ALLOW_EMPTY_${PN}-dev = "1"
 ALLOW_EMPTY_${PN}-staticdev = "1"
 
 SRC_URI_append = " \
-    file://0001-script-python-base-Change-Flash-writer-path.patch \
+    file://0001-script-python-starterkit.py-Fix-timeout-when-using-M.patch \
+    file://0002-script-python-base-Change-Flash-writer-path.patch \
     ${@'' if d.getVar('TARGET_ARCH') == 'arm' else \
-        'file://0002-starterkit-config-mot-Change-to-use-64bit-mode.patch'} \
+        'file://0003-starterkit-config-mot-Change-to-use-64bit-mode.patch'} \
 "
 
 # do_configure() nothing

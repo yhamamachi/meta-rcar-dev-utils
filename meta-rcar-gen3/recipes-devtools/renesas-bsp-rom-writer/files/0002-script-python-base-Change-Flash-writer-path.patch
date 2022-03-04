@@ -1,7 +1,7 @@
-From ff590aeaf3a385787699575cbc32f73b3fd03721 Mon Sep 17 00:00:00 2001
+From 476b51e6620a224c4669b8506f7d114510218dd6 Mon Sep 17 00:00:00 2001
 From: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
 Date: Wed, 2 Feb 2022 19:05:55 +0900
-Subject: [PATCH 1/2] script: python: base: Change Flash-writer path
+Subject: [PATCH 2/3] script: python: base: Change Flash-writer path
 
 This patch changes to use same Flash-writer path same as teraterm macro.
 So, it can share same Flash-writer file on Windows and Linux.
@@ -12,10 +12,10 @@ Signed-off-by: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
  1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/script/python/base.py b/script/python/base.py
-index aa2b77f..c895f22 100755
+index 5ef9b06..6089a20 100755
 --- a/script/python/base.py
 +++ b/script/python/base.py
-@@ -289,9 +289,8 @@ class board(base):
+@@ -295,9 +295,8 @@ class board(base):
          # for mot mode
          self.__mot	= None		# enable mot mode if file exist
          if (mot_file):
@@ -26,7 +26,7 @@ index aa2b77f..c895f22 100755
  
          # for inside
          self.__config	= ".renesas_bsp_rom_writer.{}".format(board)
-@@ -320,7 +319,7 @@ class board(base):
+@@ -326,7 +325,7 @@ class board(base):
      def os(self):	return self.__os
      def addr_map(self):	return self.__addr_map
      def mac(self):	return self.__mac
