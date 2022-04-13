@@ -39,13 +39,12 @@ do_install[noexec] = "1"
 
 do_deploy() {
     # Create deploy folder
+    rm -rf ${DEPLOYDIR}
     install -d ${DEPLOYDIR}
 
     # Copy to deploy folder
-    rm -rf ${DEPLOYDIR}/${PN}
-    cp -rpf ${S} ${DEPLOYDIR}
-    rm -rf ${DEPLOYDIR}/git/.git
-    mv -f ${DEPLOYDIR}/git ${DEPLOYDIR}/${PN}_${ARCH}bit
+    cp -rf ${S} ${DEPLOYDIR}/${PN}_${ARCH}bit
+    rm -rf ${DEPLOYDIR}/${PN}_${ARCH}bit/.git
 }
 
 addtask deploy before do_build after do_compile
