@@ -12,11 +12,11 @@ S = "${WORKDIR}/git"
 
 BRANCH = "master"
 SRC_URI = "git://github.com/morimoto/renesas-bsp-rom-writer.git;branch=${BRANCH};protocol=https"
-SRCREV = "8ac83fc8c411e23c333372329f4446b0887de2d5"
+SRCREV = "62cdd9832aa314bf3a76216535b0593c48f3cc7e"
 
 PV = "git${SRCPV}"
 
-COMPATIBLE_MACHINE = "(ulcb)"
+COMPATIBLE_MACHINE = "(ulcb)|(ebisu)|(draak)|(salvator-x)"
 COMPATIBLE_MACHINE_append = "|(qemuarm)"
 
 ALLOW_EMPTY_${PN} = "1"
@@ -24,10 +24,10 @@ ALLOW_EMPTY_${PN}-dev = "1"
 ALLOW_EMPTY_${PN}-staticdev = "1"
 
 SRC_URI_append = " \
-    file://0001-script-python-starterkit.py-Fix-timeout-when-using-M.patch \
-    file://0002-script-python-base-Change-Flash-writer-path.patch \
+    file://0001-starterkit-config-mot-Change-mot-filepath.patch \
     ${@'' if d.getVar('TARGET_ARCH') == 'arm' else \
-        'file://0003-starterkit-config-mot-Change-to-use-64bit-mode.patch'} \
+        'file://0002-starterkit-config-mot-Change-to-use-64bit-mode.patch'} \
+    file://0003-ebisu-config-sw-Fix-SW10-state.patch \
 "
 
 # do_configure() nothing
