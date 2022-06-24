@@ -12,11 +12,11 @@ S = "${WORKDIR}/git"
 
 BRANCH = "master"
 SRC_URI = "git://github.com/morimoto/renesas-bsp-rom-writer.git;branch=${BRANCH};protocol=https"
-SRCREV = "8ac83fc8c411e23c333372329f4446b0887de2d5"
+SRCREV = "d598c5313f9ce2b3523537334ed85d8db131846e"
 
 PV = "git${SRCPV}"
 
-COMPATIBLE_MACHINE = "(ulcb)"
+COMPATIBLE_MACHINE = "(ulcb)|(ebisu)|(draak)|(salvator-x)"
 COMPATIBLE_MACHINE_append = "|(qemuarm)"
 
 ALLOW_EMPTY_${PN} = "1"
