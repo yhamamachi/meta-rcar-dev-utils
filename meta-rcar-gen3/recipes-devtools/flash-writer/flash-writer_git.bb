@@ -16,7 +16,7 @@ SRCREV = "89e18eaa543e548b4a49c7731dd998c4898eacd9"
 
 PV = "V1.0.12+renesas+git${SRCPV}"
 
-COMPATIBLE_MACHINE = "(ulcb)|(salvator-x)|(ebisu)|(draak)"
+COMPATIBLE_MACHINE = "(ulcb)"
 COMPATIBLE_MACHINE_append = "|(qemuarm)"
 
 ALLOW_EMPTY_${PN} = "1"
