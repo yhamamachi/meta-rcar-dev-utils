@@ -1,0 +1,29 @@
+From 89b214b764629c00921634b846b18c4888bb7654 Mon Sep 17 00:00:00 2001
+From: {Saori Tanaka} <saori.tanaka.fz@renesas.com>
+Date: Wed, 27 Jul 2022 15:58:15 +0900
+Subject: [PATCH 2/2] ebisu/config/sw: Fix SW10 state
+
+The state of SW10 is incorrect.
+This patch fixes it according to Yocto startup guide.
+
+Signed-off-by: {Saori Tanaka} <saori.tanaka.fz@renesas.com>
+Acked-by: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+---
+ ebisu/config/sw | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ebisu/config/sw b/ebisu/config/sw
+index d05a800..af7770a 100644
+--- a/ebisu/config/sw
++++ b/ebisu/config/sw
+@@ -18,6 +18,6 @@ strdim sw_normal num_sw_normal
+ sw_normal[0] = "SW1  : [0 0 0 0 0 0]"
+ sw_normal[1] = "SW2  : [0 0 0 0 0 0]"
+ sw_normal[2] = "SW3  : [1]"
+-sw_normal[3] = "SW10 : [1 0 0 1 1 1 0 0]"
++sw_normal[3] = "SW10 : [1 0 0 1 1 1 0 1]"
+ sw_normal[4] = "SW31 : [1]"
+ 
+-- 
+2.34.1
+
