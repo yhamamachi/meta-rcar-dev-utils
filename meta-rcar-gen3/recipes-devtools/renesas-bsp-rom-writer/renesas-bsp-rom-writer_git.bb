@@ -12,7 +12,7 @@ S = "${WORKDIR}/git"
 
 BRANCH = "master"
 SRC_URI = "git://github.com/morimoto/renesas-bsp-rom-writer.git;branch=${BRANCH};protocol=https"
-SRCREV = "bb5727c05b1c46e871e9d5c87abba6e9cdadc5ab"
+SRCREV = "d598c5313f9ce2b3523537334ed85d8db131846e"
 
 PV = "git${SRCPV}"
 
