@@ -5,7 +5,7 @@ PartOf=waii.target
 ConditionPathExists=/usr/bin
 
 [Service]
-ExecStart=/usr/bin/waii/vissv2server/vissv2server --dbfile=/var/statestorage.db
+ExecStart=/usr/bin/waii/vissv2server/vissv2server --dbfile=/var/statestorage.db --vssJson=/var/vsspathlist.json
 WorkingDirectory=/usr/bin/waii/vissv2server
 Type=simple
 Restart=on-failure
