@@ -44,7 +44,7 @@ services="vissv2server agt_server"
 do_compile() {
     for service in ${services}; do \
         cd ${S}/src/github.com/w3c/automotive-viss2/server/${service}
-        CGO_ENABLED=0 go build -modcacherw
+        go build -modcacherw
     done
 }
 
