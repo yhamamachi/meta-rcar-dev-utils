@@ -39,7 +39,7 @@ do_compile_prepend() {
     cd ${S}
     cd ${B}
     git reset --hard
-    go install github.com/google/wire/cmd/wire@latest
+    GOARCH= go install github.com/google/wire/cmd/wire@latest
     go mod tidy -modcacherw -go=1.18
     npm install --global yarn
     yarn install
@@ -49,8 +49,8 @@ do_compile_prepend() {
 
 do_compile() {
     cd ${B}
-    ${GOPATH}/bin/linux_arm64/wire gen -tags oss ./pkg/cmd/grafana-cli/runner
-    ${GOPATH}/bin/linux_arm64/wire gen -tags oss ./pkg/server
+    ${GOPATH}/bin/wire gen -tags oss ./pkg/cmd/grafana-cli/runner
+    ${GOPATH}/bin/wire gen -tags oss ./pkg/server
     go run build.go build
     # move binary to upper directory
     mv ${B}/bin/*/* -t ${B}/bin
