@@ -52,7 +52,7 @@ do_compile() {
     ${GOPATH}/bin/linux_arm64/wire gen -tags oss ./pkg/cmd/grafana-cli/runner
     ${GOPATH}/bin/linux_arm64/wire gen -tags oss ./pkg/server
     go run build.go build
-    # move binart to upper directory
+    # move binary to upper directory
     mv ${B}/bin/*/* -t ${B}/bin
     rmdir ${B}/bin/* || true
 }
