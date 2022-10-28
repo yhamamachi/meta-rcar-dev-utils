@@ -51,10 +51,8 @@ do_compile() {
     cd ${B}
     ${GOPATH}/bin/wire gen -tags oss ./pkg/cmd/grafana-cli/runner
     ${GOPATH}/bin/wire gen -tags oss ./pkg/server
-    go run build.go build
-    # move binary to upper directory
-    mv ${B}/bin/*/* -t ${B}/bin
-    rmdir ${B}/bin/* || true
+    go build -ldflags -w -o ./bin/grafana-server ./pkg/cmd/grafana-server
+    go build -ldflags -w -o ./bin/grafana-cli ./pkg/cmd/grafana-cli
 }
 
 CONF_FILE = "${D}/${USRBINPATH}/grafana/conf/defaults.ini"
