@@ -3,15 +3,15 @@ SECTION = "examples"
 HOMEPAGE = "https://github.com/w3c/automotive"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-RDEPENDS_${PN} = "bash"
-RDEPENDS_${PN}-dev = "bash"
+RDEPENDS_${PN} = "bash vss"
+RDEPENDS_${PN}-dev = "bash vss"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 BRANCH = "master"
 SRC_URI = "git://${GO_IMPORT};branch=${BRANCH};protocol=https"
-SRCREV = "d0d5befbc33fff60b5781b1bdde0df245f6ee492"
+SRCREV = "576498184224cce2f9aac1e977652f9e4125d6a8"
 UPSTREAM_CHECK_COMMITS = "1"
 
 inherit go
@@ -34,10 +34,11 @@ SYSTEMD_SERVICE_${PN} = "${SYSTEMD_SERVICE_FILENAMES}"
 
 do_compile_prepend() {
     cd ${S}/src/github.com/w3c/automotive-viss2/
-    sed -i s'|.* => /home/.*||' ./go.mod
+    sed -i 's|.* => /home/.*||' ./go.mod
     go mod tidy -modcacherw
     cd ${S}/src/github.com/w3c/automotive-viss2/server
     go mod tidy -modcacherw
+    sed -i 's|"vss_vissv2.binary"|"../vss_vissv2.binary"|' ./vissv2server/vissv2server.go
 }
 
 services="vissv2server agt_server"
