@@ -16,6 +16,10 @@ SRC_URI = "git://github.com/COVESA/vehicle_signal_specification.git;branch=${BRA
 SRCREV = "525e2bd00ddf061851bdc75e849178e5d3ad5833"
 UPSTREAM_CHECK_COMMITS = "1"
 
+SRC_URI_append = " \
+    file://0001-Add-Private-branch-and-sample-sensor.patch \
+"
+
 # do_configure() nothing
 do_configure[noexec] = "1"
 
@@ -33,7 +37,9 @@ do_compile_prepend () {
 
 do_compile () {
     cd ${S}/vss-tools
-    python3 -m pipenv run python3 vspec2binary.py ../spec/VehicleSignalSpecification.vspec vss_vissv2.binary
+    python3 -m pipenv run python3 \
+        vspec2binary.py -I ../spec -o ../overlays/extensions/Private.vspec \
+        ../spec/VehicleSignalSpecification.vspec vss_vissv2.binary
 }
 
 do_install () {
