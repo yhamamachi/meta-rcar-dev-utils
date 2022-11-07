@@ -43,8 +43,9 @@ do_compile_prepend() {
     sed -i 's/,builtinassets//' .promu.yml
 
     cd ${B}/web/ui/
-    rm -rf ./package-lock.json ./module
+    rm -rf ./package-lock.json
     npm install
+    npm run build
 }
 
 do_compile() {
