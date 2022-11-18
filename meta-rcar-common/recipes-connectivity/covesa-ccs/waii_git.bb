@@ -20,14 +20,17 @@ GO_INSTALL = "${GO_IMPORT}/server"
 
 inherit systemd
 SYSTEMD_AUTO_ENABLE = "enable"
-SYSTEMD_SERVICE_FILENAME = "waii.service"
-SYSTEMD_SERVICE_${PN} = "${SYSTEMD_SERVICE_FILENAME}"
-
-SRC_URI_append = " \
-    file://${SYSTEMD_SERVICE_FILENAME} \
-    file://start.sh \
+SYSTEMD_SERVICE_FILENAMES = " \
+    waii.target \
+    agt_server.service \
+    vissv2server.service \
 "
-
+SRC_URI_append = " \
+    file://waii.target \
+    file://agt_server.service \
+    file://vissv2server.service \
+"
+SYSTEMD_SERVICE_${PN} = "${SYSTEMD_SERVICE_FILENAMES}"
 
 do_compile_prepend() {
     cd ${S}/src/github.com/w3c/automotive-viss2/
@@ -55,7 +58,9 @@ DBFILE_PATH = "${S}/src/github.com/w3c/automotive-viss2/server/vissv2server/serv
 do_install() {
     # service file
     install -d ${D}/${systemd_unitdir}/system
-    install -m 0644 ${WORKDIR}/${SYSTEMD_SERVICE_FILENAME} ${D}/${systemd_unitdir}/system
+    for service in ${SYSTEMD_SERVICE_FILENAMES}; do \
+        install -m 0644 ${WORKDIR}/${service} ${D}/${systemd_unitdir}/system
+    done
 
     # binary
     install -d ${D}/${USRBINPATH}/waii
@@ -67,8 +72,6 @@ do_install() {
     find ${D}/${USRBINPATH}/waii/ -name "*.go" \
         | xargs rm -f
 
-    # Copy script
-    install -m 0755 ${WORKDIR}/start.sh ${D}/${USRBINPATH}/waii
     # Copy dbfile
     install -d ${D}/var
     install -m 0644 ${DBFILE_PATH} ${D}/var
