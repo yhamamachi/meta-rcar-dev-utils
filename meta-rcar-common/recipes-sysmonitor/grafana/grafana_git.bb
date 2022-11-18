@@ -14,8 +14,7 @@ BRANCH = "release-9.2.1"
 SRCREV = "34f7baebda29994f240ce8375765f73be65dca4e"
 SRC_URI = "git://${GO_IMPORT}.git;branch=${BRANCH};protocol=https"
 UPSTREAM_CHECK_COMMITS = "1"
-#export GO111MODULE="off"
-#export CGO_ENABLED="0"
+export GOFLAGS="-modcacherw"
 
 inherit systemd
 SYSTEMD_AUTO_ENABLE = "enable"
@@ -34,9 +33,7 @@ do_compile_prepend() {
     cd ${B}
     git reset --hard
     go install github.com/google/wire/cmd/wire@latest
-    #go get -d github.com/google/wire/cmd/wire
     go mod tidy -modcacherw -go=1.18
-    #go mod verify  -modcacherw
 }
 
 
