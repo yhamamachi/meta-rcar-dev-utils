@@ -19,6 +19,10 @@ SRC_URI = "git://${GO_IMPORT}.git;branch=${BRANCH};protocol=https"
 UPSTREAM_CHECK_COMMITS = "1"
 export GOFLAGS="-modcacherw"
 
+# Go binaries produce unexpected effects that the Yocto QA mechanism doesn't like.
+# We disable those checks here.
+INSANE_SKIP_${PN} = "ldflags"
+
 inherit systemd
 SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE_FILENAME = "grafana.service"
