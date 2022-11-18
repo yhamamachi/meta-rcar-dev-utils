@@ -5,6 +5,9 @@ LIC_FILES_CHKSUM = "file://${S}/git-r0/src/github.com/grafana/grafana/LICENSE;md
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 RDEPENDS_${PN} = "bash"
 
+inherit npm
+export NODE_OPTIONS="--max-old-space-size=8192"
+
 inherit go
 GO_IMPORT = "github.com/grafana/grafana"
 GO_INSTALL = "${GO_IMPORT}"
@@ -34,6 +37,9 @@ do_compile_prepend() {
     git reset --hard
     go install github.com/google/wire/cmd/wire@latest
     go mod tidy -modcacherw -go=1.18
+    npm install --global yarn
+    yarn install
+    yarn build
 }
 
 
