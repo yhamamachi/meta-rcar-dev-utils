@@ -1,0 +1,15 @@
+[Unit]
+Description = Cluster Appication server
+After=local-fs.target
+ConditionPathExists=/usr/bin
+
+[Service]
+#Environment=VAL=test
+ExecStart=python3 -m http.server 8088
+WorkingDirectory=/usr/bin/cluster-app
+Restart=no
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+
