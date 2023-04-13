@@ -9,7 +9,7 @@ inherit npm
 export NODE_OPTIONS="--max-old-space-size=8192"
 
 BRANCH = "main"
-SRCREV = "62997cfac85a804ad9fa4d9a6c3be0089b19dd27"
+SRCREV = "52b90c5d5fb6b316e60d0329a6b3e34c0453b15e"
 SRC_URI = "git://github.com/yhamamachi/automotive-viss2-client.git;branch=${BRANCH};protocol=https"
 UPSTREAM_CHECK_COMMITS = "1"
 
