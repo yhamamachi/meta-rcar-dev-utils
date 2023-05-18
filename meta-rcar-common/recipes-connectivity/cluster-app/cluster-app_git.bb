@@ -2,7 +2,6 @@ DESCRIPTION = "Cluster-app"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/git/LICENSE;md5=785e89a3128be938c1446025250da013"
 
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 RDEPENDS_${PN} = "bash"
 
 inherit npm

@@ -5,8 +5,6 @@ inherit packagegroup
 
 PR = "r0"
 
-PACKAGE_ARCH = "${MACHINE_ARCH}"
-
 PACKAGES = " \
     ${PN} \
 "

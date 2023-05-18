@@ -2,7 +2,6 @@ DESCRIPTION = "W3C Automotive Interface Implementation - WAII"
 SECTION = "examples"
 HOMEPAGE = "https://github.com/w3c/automotive"
 
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 RDEPENDS_${PN} = "bash vss"
 RDEPENDS_${PN}-dev = "bash vss"
 

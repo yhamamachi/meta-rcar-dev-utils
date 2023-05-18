@@ -2,7 +2,6 @@ DESCRIPTION = "Grafana"
 LICENSE = "AGPL-3.0"
 LIC_FILES_CHKSUM = "file://${S}/git-r0/src/github.com/grafana/grafana/LICENSE;md5=eb1e647870add0502f8f010b19de32af"
 
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 RDEPENDS_${PN} = "bash"
 
 inherit npm

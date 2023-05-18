@@ -2,7 +2,6 @@ DESCRIPTION = "VEHICLE SIGNAL SPECIFICATION"
 SECTION = "examples"
 HOMEPAGE = "https://github.com/w3c/automotive"
 
-PACKAGE_ARCH = "${MACHINE_ARCH}"
 RDEPENDS_${PN} = "bash"
 RDEPENDS_${PN}-dev = "bash"
 
