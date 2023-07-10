@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://${S}/git/LICENSE;md5=785e89a3128be938c1446025250da013
 
 RDEPENDS_${PN} = "bash"
 
-inherit npm
+DEPENDS_append = " nodejs-native"
 export NODE_OPTIONS="--max-old-space-size=8192"
 
 BRANCH = "main"

@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://${S}/git-r0/src/github.com/grafana/grafana/LICENSE;md
 
 RDEPENDS_${PN} = "bash"
 
-inherit npm
+DEPENDS_append = " nodejs-native"
 export NODE_OPTIONS="--max-old-space-size=8192"
 
 inherit go
