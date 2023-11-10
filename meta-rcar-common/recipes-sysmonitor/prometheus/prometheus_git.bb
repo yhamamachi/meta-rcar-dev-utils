@@ -3,7 +3,7 @@ LICENSE = "Apache-2.0"
 VERSION = "2.39.0"
 LIC_FILES_CHKSUM = "file://${S}/git-r0/src/${GO_IMPORT}/LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
-RDEPENDS_${PN} = "bash"
+RDEPENDS:${PN} = "bash"
 
 inherit go
 GO_IMPORT = "github.com/prometheus/prometheus"
@@ -20,11 +20,11 @@ export CGO_ENABLED="0"
 inherit systemd
 SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE_FILENAME = "prometheus.service"
-SYSTEMD_SERVICE_${PN} = "${SYSTEMD_SERVICE_FILENAME}"
+SYSTEMD_SERVICE:${PN} = "${SYSTEMD_SERVICE_FILENAME}"
 
-DEPENDS_append = " nodejs-native"
+DEPENDS:append = " nodejs-native"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://${SYSTEMD_SERVICE_FILENAME} \
 "
 
@@ -35,7 +35,7 @@ do_configure () {
     :
 }
 
-do_compile_prepend() {
+do_compile:prepend() {
     cd ${B}
     git reset --hard
     go mod tidy #  -go=1.17

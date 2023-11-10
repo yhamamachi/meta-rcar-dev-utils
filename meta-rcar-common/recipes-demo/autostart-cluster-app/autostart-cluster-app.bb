@@ -2,16 +2,16 @@ DESCRIPTION = "Autostart service file installer for cluster-app with chromium"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-RDEPENDS_${PN} = "bash"
+RDEPENDS:${PN} = "bash"
 
 inherit systemd
 #SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE_FILENAME = "autostart-cluster-app.service"
-SYSTEMD_SERVICE_${PN} = "${SYSTEMD_SERVICE_FILENAME}"
+SYSTEMD_SERVICE:${PN} = "${SYSTEMD_SERVICE_FILENAME}"
 SYSTEMD_ENVIRONMENT_FILENAME = "autostart-cluster-app.config"
-FILES_${PN} += "/var/${SYSTEMD_ENVIRONMENT_FILENAME}"
+FILES:${PN} += "/var/${SYSTEMD_ENVIRONMENT_FILENAME}"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://${SYSTEMD_SERVICE_FILENAME} \
     file://${SYSTEMD_ENVIRONMENT_FILENAME} \
 "

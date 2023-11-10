@@ -1,6 +1,6 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_URI_append_ulcb = " \
+SRC_URI:append_ulcb = " \
     file://uvc.cfg \
 "
 

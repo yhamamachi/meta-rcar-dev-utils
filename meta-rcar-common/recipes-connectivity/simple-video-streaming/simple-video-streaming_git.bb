@@ -11,23 +11,23 @@ SRCREV = "b5d830df0a2851fd0ead7f0ea521a25e314d19bb"
 
 PV = "git${SRCPV}"
 
-ALLOW_EMPTY_${PN} = "1"
-ALLOW_EMPTY_${PN}-dev = "1"
-ALLOW_EMPTY_${PN}-staticdev = "1"
+ALLOW_EMPTY:${PN} = "1"
+ALLOW_EMPTY:${PN}-dev = "1"
+ALLOW_EMPTY:${PN}-staticdev = "1"
 
 inherit systemd
 SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE_FILENAME = "simple-video-streaming.service"
-SYSTEMD_SERVICE_${PN} = "${SYSTEMD_SERVICE_FILENAME}"
+SYSTEMD_SERVICE:${PN} = "${SYSTEMD_SERVICE_FILENAME}"
 
 # For debug purpose service file
 TEST_SYSTEMD_SERVICE_FILENAME = "simple-video-streaming-test.service"
-FILES_${PN} = " \
+FILES:${PN} = " \
     ${systemd_unitdir}/system/${TEST_SYSTEMD_SERVICE_FILENAME} \
     ${USRBINPATH}/* \
 "
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://${SYSTEMD_SERVICE_FILENAME} \
     file://${TEST_SYSTEMD_SERVICE_FILENAME} \
 "

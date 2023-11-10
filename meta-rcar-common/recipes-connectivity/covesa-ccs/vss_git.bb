@@ -2,8 +2,8 @@ DESCRIPTION = "VEHICLE SIGNAL SPECIFICATION"
 SECTION = "examples"
 HOMEPAGE = "https://github.com/w3c/automotive"
 
-RDEPENDS_${PN} = "bash"
-RDEPENDS_${PN}-dev = "bash"
+RDEPENDS:${PN} = "bash"
+RDEPENDS:${PN}-dev = "bash"
 
 LICENSE = "MPL-2.0"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/${LICENSE};md5=815ca599c9df247a0c7f619bab123dad"
@@ -15,7 +15,7 @@ SRC_URI = "git://github.com/COVESA/vehicle_signal_specification.git;branch=${BRA
 SRCREV = "525e2bd00ddf061851bdc75e849178e5d3ad5833"
 UPSTREAM_CHECK_COMMITS = "1"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://0001-Add-Private-branch-and-sample-sensor.patch \
 "
 
@@ -24,7 +24,7 @@ do_configure[noexec] = "1"
 
 S = "${WORKDIR}/git"
 
-do_compile_prepend () {
+do_compile:prepend () {
     cd ${S}
     git submodule update --init
     cd ${S}/vss-tools
