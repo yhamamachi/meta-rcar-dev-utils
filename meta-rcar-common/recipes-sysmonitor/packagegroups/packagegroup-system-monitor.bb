@@ -9,7 +9,7 @@ PACKAGES = " \
     ${PN} \
 "
 
-RDEPENDS_${PN} = " \
+RDEPENDS:${PN} = " \
     grafana \
     node-exporter \
     prometheus \

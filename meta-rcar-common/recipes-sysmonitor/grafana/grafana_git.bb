@@ -2,9 +2,9 @@ DESCRIPTION = "Grafana"
 LICENSE = "AGPL-3.0"
 LIC_FILES_CHKSUM = "file://${S}/git-r0/src/github.com/grafana/grafana/LICENSE;md5=eb1e647870add0502f8f010b19de32af"
 
-RDEPENDS_${PN} = "bash"
+RDEPENDS:${PN} = "bash"
 
-DEPENDS_append = " nodejs-native"
+DEPENDS:append = " nodejs-native"
 export NODE_OPTIONS="--max-old-space-size=8192"
 
 inherit go
@@ -20,21 +20,21 @@ export GOFLAGS="-modcacherw"
 
 # Go binaries produce unexpected effects that the Yocto QA mechanism doesn't like.
 # We disable those checks here.
-INSANE_SKIP_${PN} = "ldflags"
+INSANE_SKIP:${PN} = "ldflags"
 
 inherit systemd
 SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE_FILENAME = "grafana.service"
-SYSTEMD_SERVICE_${PN} = "${SYSTEMD_SERVICE_FILENAME}"
+SYSTEMD_SERVICE:${PN} = "${SYSTEMD_SERVICE_FILENAME}"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://${SYSTEMD_SERVICE_FILENAME} \
 "
 
 S = "${WORKDIR}"
 B = "${S}/git-r0/src/github.com/grafana/grafana"
 
-do_compile_prepend() {
+do_compile:prepend() {
     cd ${S}
     cd ${B}
     git reset --hard

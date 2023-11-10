@@ -17,19 +17,19 @@ SRCREV = "89e18eaa543e548b4a49c7731dd998c4898eacd9"
 PV = "V1.0.12+renesas+git${SRCPV}"
 
 COMPATIBLE_MACHINE = "(ulcb)"
-COMPATIBLE_MACHINE_append = "|(qemuarm)"
+COMPATIBLE_MACHINE:append = "|(qemuarm)"
 
-ALLOW_EMPTY_${PN} = "1"
-ALLOW_EMPTY_${PN}-dev = "1"
-ALLOW_EMPTY_${PN}-staticdev = "1"
+ALLOW_EMPTY:${PN} = "1"
+ALLOW_EMPTY:${PN}-dev = "1"
+ALLOW_EMPTY:${PN}-staticdev = "1"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://0001-Fix-error-when-executing-mkdir.patch \
 "
 ARCH = "${@'32' if d.getVar('TARGET_ARCH') == 'arm' else '64'}"
 
 EXTRA_OEMAKE = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${TARGET_PREFIX}gcc ${TOOLCHAIN_OPTIONS}" V=1'
-EXTRA_OEMAKE_append = " AArch=${ARCH} BOARD=ULCB"
+EXTRA_OEMAKE:append = " AArch=${ARCH} BOARD=ULCB"
 
 # do_install() nothing
 do_install[noexec] = "1"

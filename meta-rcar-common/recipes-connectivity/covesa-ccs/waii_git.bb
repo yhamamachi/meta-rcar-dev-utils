@@ -2,8 +2,8 @@ DESCRIPTION = "W3C Automotive Interface Implementation - WAII"
 SECTION = "examples"
 HOMEPAGE = "https://github.com/w3c/automotive"
 
-RDEPENDS_${PN} = "bash vss"
-RDEPENDS_${PN}-dev = "bash vss"
+RDEPENDS:${PN} = "bash vss"
+RDEPENDS:${PN}-dev = "bash vss"
 
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
@@ -24,14 +24,14 @@ SYSTEMD_SERVICE_FILENAMES = " \
     agt_server.service \
     vissv2server.service \
 "
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://waii.target \
     file://agt_server.service \
     file://vissv2server.service \
 "
-SYSTEMD_SERVICE_${PN} = "${SYSTEMD_SERVICE_FILENAMES}"
+SYSTEMD_SERVICE:${PN} = "${SYSTEMD_SERVICE_FILENAMES}"
 
-do_compile_prepend() {
+do_compile:prepend() {
     cd ${S}/src/github.com/w3c/automotive-viss2/
     sed -i 's|.* => /home/.*||' ./go.mod
     go mod tidy -modcacherw
@@ -48,7 +48,7 @@ do_compile() {
     done
 }
 
-FILES_${PN} = " \
+FILES:${PN} = " \
     ${USRBINPATH}/waii/* \
     /var/* \
 "

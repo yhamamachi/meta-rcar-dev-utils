@@ -17,13 +17,13 @@ SRCREV = "62cdd9832aa314bf3a76216535b0593c48f3cc7e"
 PV = "git${SRCPV}"
 
 COMPATIBLE_MACHINE = "(ulcb)|(ebisu)|(draak)|(salvator-x)"
-COMPATIBLE_MACHINE_append = "|(qemuarm)"
+COMPATIBLE_MACHINE:append = "|(qemuarm)"
 
-ALLOW_EMPTY_${PN} = "1"
-ALLOW_EMPTY_${PN}-dev = "1"
-ALLOW_EMPTY_${PN}-staticdev = "1"
+ALLOW_EMPTY:${PN} = "1"
+ALLOW_EMPTY:${PN}-dev = "1"
+ALLOW_EMPTY:${PN}-staticdev = "1"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://0001-starterkit-config-mot-Change-mot-filepath.patch \
     ${@'' if d.getVar('TARGET_ARCH') == 'arm' else \
         'file://0002-starterkit-config-mot-Change-to-use-64bit-mode.patch'} \

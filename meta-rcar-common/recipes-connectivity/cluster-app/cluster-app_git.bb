@@ -2,9 +2,9 @@ DESCRIPTION = "Cluster-app"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${S}/git/LICENSE;md5=785e89a3128be938c1446025250da013"
 
-RDEPENDS_${PN} = "bash"
+RDEPENDS:${PN} = "bash"
 
-DEPENDS_append = " nodejs-native"
+DEPENDS:append = " nodejs-native"
 export NODE_OPTIONS="--max-old-space-size=8192"
 
 BRANCH = "main"
@@ -15,9 +15,9 @@ UPSTREAM_CHECK_COMMITS = "1"
 inherit systemd
 SYSTEMD_AUTO_ENABLE = "enable"
 SYSTEMD_SERVICE_FILENAME = "cluster-app.service"
-SYSTEMD_SERVICE_${PN} = "${SYSTEMD_SERVICE_FILENAME}"
+SYSTEMD_SERVICE:${PN} = "${SYSTEMD_SERVICE_FILENAME}"
 
-SRC_URI_append = " \
+SRC_URI:append = " \
     file://${SYSTEMD_SERVICE_FILENAME} \
 "
 
@@ -28,7 +28,7 @@ do_configure() {
     :
 }
 
-do_compile_prepend() {
+do_compile:prepend() {
     cd ${B}/cluster-app
     npm install
 }

@@ -7,5 +7,5 @@ PACKAGE_CLASSES ?= "package_rpm"
 INITRAMFS_IMAGE_BUNDLE = '1'
 INITRAMFS_IMAGE = 'core-image-busybox'
 EXTRA_IMAGE_FEATURES = 'debug-tweaks'
-IMAGE_INSTALL_append = ' xz'
+IMAGE_INSTALL:append = ' xz'
 
