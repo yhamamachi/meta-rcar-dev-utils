@@ -28,7 +28,7 @@ SRC_URI_append = " \
 "
 ARCH = "${@'32' if d.getVar('TARGET_ARCH') == 'arm' else '64'}"
 
-EXTRA_OEMAKE = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${TARGET_PREFIX}gcc ${TOOLCHAIN_OPTIONS}" V=1'
+EXTRA_OEMAKE = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${TARGET_PREFIX}gcc ${TOOLCHAIN_OPTIONS}" V=1 -j1'
 EXTRA_OEMAKE_append = " AArch=${ARCH} BOARD=ULCB"
 
 # do_install() nothing
