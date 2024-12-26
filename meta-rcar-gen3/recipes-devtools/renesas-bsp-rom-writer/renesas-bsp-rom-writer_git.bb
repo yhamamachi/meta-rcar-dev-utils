@@ -28,6 +28,7 @@ SRC_URI:append = " \
     ${@'' if d.getVar('TARGET_ARCH') == 'arm' else \
         'file://0002-starterkit-config-mot-Change-to-use-64bit-mode.patch'} \
     file://0003-ebisu-config-sw-Fix-SW10-state.patch \
+    file://0004-Update-for-Yocto-v5.9.7.patch \
 "
 
 # do_configure() nothing

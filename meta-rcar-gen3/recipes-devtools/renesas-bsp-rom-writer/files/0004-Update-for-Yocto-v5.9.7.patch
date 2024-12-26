@@ -1,0 +1,126 @@
+From 0892a3b6ae456cc0b0288902057231a37a14773b Mon Sep 17 00:00:00 2001
+From: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+Date: Thu, 26 Dec 2024 19:51:13 +0900
+Subject: [PATCH] Update for Yocto v5.9.7
+
+Signed-off-by: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+---
+ starterkit/config/os/yocto/config      | 20 +++++++++++---------
+ starterkit/config/os/yocto/map03/h3_4g |  8 ++++++++
+ starterkit/config/os/yocto/map03/h3_8g |  8 ++++++++
+ starterkit/config/os/yocto/map03/m3_2g |  8 ++++++++
+ starterkit/config/os/yocto/map03/m3_8g |  8 ++++++++
+ starterkit/config/os/yocto/map03/m3n   |  8 ++++++++
+ 6 files changed, 51 insertions(+), 9 deletions(-)
+ create mode 100755 starterkit/config/os/yocto/map03/h3_4g
+ create mode 100755 starterkit/config/os/yocto/map03/h3_8g
+ create mode 100755 starterkit/config/os/yocto/map03/m3_2g
+ create mode 100755 starterkit/config/os/yocto/map03/m3_8g
+ create mode 100755 starterkit/config/os/yocto/map03/m3n
+
+diff --git a/starterkit/config/os/yocto/config b/starterkit/config/os/yocto/config
+index bf4339d..fd8ae78 100644
+--- a/starterkit/config/os/yocto/config
++++ b/starterkit/config/os/yocto/config
+@@ -6,17 +6,19 @@
+ ; TeraTerm Macro has many limitation
+ ; We need to adjust to it here
+ ;
+-strdim list_version 5
+-strdim list_map     5
++strdim list_version 6
++strdim list_map     6
+ 
+-list_version[0] = "5.9.0"
+-list_version[1] = "5.5.0"
+-list_version[2] = "5.1.0"
+-list_version[3] = "4.1.0"
+-list_version[4] = "3.21.0"
++list_version[0] = "5.9.7"
++list_version[1] = "5.9.0/5.9.4"
++list_version[2] = "5.5.0"
++list_version[3] = "5.1.0"
++list_version[4] = "4.1.0"
++list_version[5] = "3.21.0"
+ 
+-list_map[0] = "map02"
++list_map[0] = "map03"
+ list_map[1] = "map02"
+ list_map[2] = "map02"
+-list_map[3] = "map01"
++list_map[3] = "map02"
+ list_map[4] = "map01"
++list_map[5] = "map01"
+diff --git a/starterkit/config/os/yocto/map03/h3_4g b/starterkit/config/os/yocto/map03/h3_4g
+new file mode 100755
+index 0000000..81aba7a
+--- /dev/null
++++ b/starterkit/config/os/yocto/map03/h3_4g
+@@ -0,0 +1,8 @@
++num_addr_map = 6
++strdim addr_map num_addr_map
++addr_map[0] = "E6320000,000000,bootparam_sa0-4x1g.srec"
++addr_map[1] = "E6304000,040000,bl2-h3ulcb-4x1g.srec"
++addr_map[2] = "E6320000,180000,cert_header_sa6-4x1g.srec"
++addr_map[3] = "44000000,1C0000,bl31-h3ulcb-4x1g.srec"
++addr_map[4] = "44100000,200000,tee-h3ulcb.srec"
++addr_map[5] = "50000000,640000,u-boot-elf-h3ulcb.srec"
+diff --git a/starterkit/config/os/yocto/map03/h3_8g b/starterkit/config/os/yocto/map03/h3_8g
+new file mode 100755
+index 0000000..8aa75ee
+--- /dev/null
++++ b/starterkit/config/os/yocto/map03/h3_8g
+@@ -0,0 +1,8 @@
++num_addr_map = 6
++strdim addr_map num_addr_map
++addr_map[0] = "E6320000,000000,bootparam_sa0-4x2g.srec"
++addr_map[1] = "E6304000,040000,bl2-h3ulcb-4x2g.srec"
++addr_map[2] = "E6320000,180000,cert_header_sa6-4x2g.srec"
++addr_map[3] = "44000000,1C0000,bl31-h3ulcb-4x2g.srec"
++addr_map[4] = "44100000,200000,tee-h3ulcb.srec"
++addr_map[5] = "50000000,640000,u-boot-elf-h3ulcb.srec"
+diff --git a/starterkit/config/os/yocto/map03/m3_2g b/starterkit/config/os/yocto/map03/m3_2g
+new file mode 100755
+index 0000000..f099b42
+--- /dev/null
++++ b/starterkit/config/os/yocto/map03/m3_2g
+@@ -0,0 +1,8 @@
++num_addr_map = 6
++strdim addr_map num_addr_map
++addr_map[0] = "E6320000,000000,bootparam_sa0.srec"
++addr_map[1] = "E6304000,040000,bl2-m3ulcb.srec"
++addr_map[2] = "E6320000,180000,cert_header_sa6.srec"
++addr_map[3] = "44000000,1C0000,bl31-m3ulcb.srec"
++addr_map[4] = "44100000,200000,tee-m3ulcb.srec"
++addr_map[5] = "50000000,640000,u-boot-elf-m3ulcb.srec"
+diff --git a/starterkit/config/os/yocto/map03/m3_8g b/starterkit/config/os/yocto/map03/m3_8g
+new file mode 100755
+index 0000000..f099b42
+--- /dev/null
++++ b/starterkit/config/os/yocto/map03/m3_8g
+@@ -0,0 +1,8 @@
++num_addr_map = 6
++strdim addr_map num_addr_map
++addr_map[0] = "E6320000,000000,bootparam_sa0.srec"
++addr_map[1] = "E6304000,040000,bl2-m3ulcb.srec"
++addr_map[2] = "E6320000,180000,cert_header_sa6.srec"
++addr_map[3] = "44000000,1C0000,bl31-m3ulcb.srec"
++addr_map[4] = "44100000,200000,tee-m3ulcb.srec"
++addr_map[5] = "50000000,640000,u-boot-elf-m3ulcb.srec"
+diff --git a/starterkit/config/os/yocto/map03/m3n b/starterkit/config/os/yocto/map03/m3n
+new file mode 100755
+index 0000000..77550db
+--- /dev/null
++++ b/starterkit/config/os/yocto/map03/m3n
+@@ -0,0 +1,8 @@
++num_addr_map = 6
++strdim addr_map num_addr_map
++addr_map[0] = "E6320000,000000,bootparam_sa0.srec"
++addr_map[1] = "E6304000,040000,bl2-m3nulcb.srec"
++addr_map[2] = "E6320000,180000,cert_header_sa6.srec"
++addr_map[3] = "44000000,1C0000,bl31-m3nulcb.srec"
++addr_map[4] = "44100000,200000,tee-m3nulcb.srec"
++addr_map[5] = "50000000,640000,u-boot-elf.srec"
+-- 
+2.34.1
+
